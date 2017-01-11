@@ -5,9 +5,6 @@ import pandas as pd
 
 
 def deltae_cie_2000(lab_color_vector, lab_color_matrix):
-    Kl=1
-    Kc=1
-    Kh=1
     L, a, b = lab_color_vector
     avg_Lp = (L + lab_color_matrix[:, 0]) / 2.0
     C1 = np.sqrt(np.sum(np.power(lab_color_vector[1:], 2)))
@@ -41,10 +38,10 @@ def deltae_cie_2000(lab_color_vector, lab_color_matrix):
     R_C = np.sqrt((np.power(avg_C1p_C2p, 7.0)) / (np.power(avg_C1p_C2p, 7.0) + np.power(25.0, 7.0)))
     R_T = -2 * R_C * np.sin(2 * np.radians(delta_ro))
     return np.sqrt(
-        np.power(delta_Lp / (S_L * Kl), 2) +
-        np.power(delta_Cp / (S_C * Kc), 2) +
-        np.power(delta_Hp / (S_H * Kh), 2) +
-        R_T * (delta_Cp / (S_C * Kc)) * (delta_Hp / (S_H * Kh)))
+        np.power(delta_Lp / (S_L), 2) +
+        np.power(delta_Cp / (S_C), 2) +
+        np.power(delta_Hp / (S_H), 2) +
+        R_T * (delta_Cp / (S_C)) * (delta_Hp / (S_H)))
 
 def deltas(nums):
     listoflists = []
