@@ -147,11 +147,6 @@ def deltae_cie_2000(lab_color_vector, lab_color_matrix):
         np.power(delta_Hp / (S_H), 2) +
         R_T * (delta_Cp / (S_C)) * (delta_Hp / (S_H)))
 
-def deltas(nums):
-    listoflists = []
-    for num in range(nums):
-        listoflists.append([num])
-    return listoflists
 
 def manage(inp):
     for i in inp:
@@ -176,7 +171,7 @@ color2 = cursor.fetchall()
 df = pd.DataFrame(columns = color, index = color)
 the_matrix = np.array(color2)
 shape = df.shape[0]
-inputs = deltas(shape)
+inputs = [[x] for x in range(shape)]
 manage(inputs)
 print (df)
 
